@@ -5,18 +5,15 @@ use warnings;
 use Moose;
 use Pod::Inherit;
 
-our $VERSION = '0.001';
-
-with 'Dist::Zilla::Role::BeforeBuild';
+our $VERSION = '0.002';
 
 =head1 NAME
 
+Dist::Zilla::Plugin::PodInherit - use L<Pod::Inherit> to provide C<INHERITED METHODS> sections in POD
 
 =head1 VERSION
 
-version 0.001
-Dist::Zilla::Plugin::PodInherit - use L<Pod::Inherit> to provide C<INHERITED METHODS>
-sections in POD
+version 0.002
 
 =head1 SYNOPSIS
 
@@ -27,6 +24,10 @@ Just add [PodInherit] to dist.ini. Currently there's no config options at all.
 Simple wrapper around L<Pod::Inherit> to provide an 'inherited methods' section for
 any modules in this distribution. See the documentation for L<Pod::Inherit> for more
 details.
+
+=cut
+
+with 'Dist::Zilla::Role::BeforeBuild';
 
 =head1 METHODS
 
