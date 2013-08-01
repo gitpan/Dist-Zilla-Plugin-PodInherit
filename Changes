@@ -1,5 +1,11 @@
 Revision history for Dist-Zilla-Plugin-PodInherit
 
+0.003     2013-08-01 18:27:28 Europe/London
+	No functional changes
+
+	Test fixes:
+	* Remove unused dependencies from basic.t
+
 0.002     2013-07-31 23:01:20 Europe/London
 	No functional changes
 

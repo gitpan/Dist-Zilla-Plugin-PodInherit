@@ -5,7 +5,7 @@ use warnings;
 use Moose;
 use Pod::Inherit;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 =head1 NAME
 
@@ -13,7 +13,7 @@ Dist::Zilla::Plugin::PodInherit - use L<Pod::Inherit> to provide C<INHERITED MET
 
 =head1 VERSION
 
-version 0.002
+version 0.003
 
 =head1 SYNOPSIS
 

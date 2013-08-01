@@ -9,7 +9,7 @@ use Test::More;
 		dist_root => 't/dist'
 	}, {
 		add_files => {
-			'source/dist.ini' => simple_ini('GatherDir', 'MetaJSON', 'Prereqs::FromCPANfile', 'PodInherit'),
+			'source/dist.ini' => simple_ini('GatherDir', 'PodInherit'),
 		}
 	});
 	$tzil->build;
