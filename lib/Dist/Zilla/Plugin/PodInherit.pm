@@ -5,7 +5,7 @@ use warnings;
 use Moose;
 use Pod::Inherit;
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 =head1 NAME
 
@@ -13,7 +13,7 @@ Dist::Zilla::Plugin::PodInherit - use L<Pod::Inherit> to provide C<INHERITED MET
 
 =head1 VERSION
 
-version 0.005
+version 0.006
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,12 @@ Calls L<Pod::Inherit> to generate the merged C<.pod> documentation files.
 
 sub process_pod {
 	my ($self, $file) = @_;
-	$self->log("Generating inherited pod files");
+	unless(-r $file->name) {
+		$self->log_debug("Skipping " . $file->name . " because we can't read it, probably InMemory/FromCode");
+		return;
+	}
+
+	$self->log_debug("Processing " . $file->name . " for inherited methods");
 	local @INC = ('lib/', @INC);
 	my $cfg = Pod::Inherit->new({
 		input_files => [$file->name],

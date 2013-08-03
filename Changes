@@ -1,5 +1,10 @@
 Revision history for Dist-Zilla-Plugin-PodInherit
 
+0.006     2013-08-03 03:21:38 Europe/London
+	Bugs fixed:
+	* Skip in-memory files without attempting to process them
+	* Don't log a message for every file we process unless in debug mode
+
 0.005     2013-08-03 02:52:33 Europe/London
 	Functional changes:
 	* Previous attempt to generate in build only was a
