@@ -5,7 +5,7 @@ use warnings;
 use Moose;
 use Pod::Inherit;
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 =head1 NAME
 
@@ -13,7 +13,7 @@ Dist::Zilla::Plugin::PodInherit - use L<Pod::Inherit> to provide C<INHERITED MET
 
 =head1 VERSION
 
-version 0.004
+version 0.005
 
 =head1 SYNOPSIS
 
@@ -27,17 +27,20 @@ details.
 
 =cut
 
+use Dist::Zilla::File::InMemory;
+with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::FileInjector';
-with 'Dist::Zilla::Role::FileMunger';
 with 'Dist::Zilla::Role::FileFinderUser' => {
 	default_finders => [ qw( :InstallModules ) ],
 };
+
+has generated => is => 'rw', default => 0;
 
 =head1 METHODS
 
 =cut
 
-=head2 munge_file
+=head2 gather_files
 
 Called for each matching file (using :InstallModules so we expect
 to find all the .pm files), we'll attempt to do pod generation for
@@ -45,9 +48,12 @@ the ones which end in .pm (case insensitive, will also match .PM).
 
 =cut
 
-sub munge_file {
-	my ($self, $file) = @_;
-	$self->process_pod($file) if $file->name =~ /\.pm$/i;
+sub gather_files {
+	my ($self) = @_;
+	foreach my $file (@{ $self->found_files }) {
+		$self->process_pod($file) if $file->name =~ /\.pm$/i;
+	}
+	$self->log("Generated " . $self->generated . " POD files");
 }
 
 =head2 process_pod
@@ -66,10 +72,16 @@ sub process_pod {
 		method_format => 'L<%m|%c/%m>',
 		debug => 0,
 	});
-	$cfg->write_pod or return;
-	(my $pod = $file->name) =~ s{\.pm$}{.pod}i;
-	return unless -r $pod;
-	$self->add_file(Dist::Zilla::File::OnDisk->new( { name => $pod } ))
+	my $content = $cfg->create_pod($file->name) or return;
+	(my $output = $file->name) =~ s{\.pm$}{.pod}i;
+	$self->add_file(
+		my $new = Dist::Zilla::File::InMemory->new({
+			name    => $output,
+			content => $content,
+		})
+	);
+	$self->log_debug("Generated POD for " . $file->name . " in " . $new->name);
+	$self->generated($self->generated + 1);
 }
 
 __PACKAGE__->meta->make_immutable;

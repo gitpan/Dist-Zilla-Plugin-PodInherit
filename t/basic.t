@@ -13,7 +13,9 @@ use Test::More;
 		}
 	});
 	$tzil->build;
-	ok(my $subclass = $tzil->slurp_file('source/lib/ExampleClass/Subclass.pod'), 'read output POD');
+	ok(!-e $tzil->tempdir->file('source/lib/ExampleClass/Subclass.pod'), 'no .pod created in source directory');
+	ok(!-e $tzil->tempdir->file('build/lib/ExampleClass/Base.pod'), 'no .pod for a base class');
+	ok(my $subclass = $tzil->slurp_file('build/lib/ExampleClass/Subclass.pod'), 'read output POD');
 	my $parser = Pod::POM->new;
 	ok(my $pom = $parser->parse_text($subclass), 'parse POD') or die $parser->error;
 	my ($inherited, @extra) = (grep $_->title eq 'INHERITED METHODS', $pom->head1);

@@ -1,5 +1,15 @@
 Revision history for Dist-Zilla-Plugin-PodInherit
 
+0.005     2013-08-03 02:52:33 Europe/London
+	Functional changes:
+	* Previous attempt to generate in build only was a
+	failure; we now use the FileGatherer role to inject
+	the new .pod files.
+
+	Test fixes:
+	* Test that we're writing to build/, not source/
+	* Also verify that source/ isn't touched
+
 0.004     2013-08-03 02:14:29 Europe/London
 	Functional changes:
 	* Use the FileMunger and FileInjector roles so that
