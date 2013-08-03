@@ -37,7 +37,8 @@
       "test" : {
          "requires" : {
             "Capture::Tiny" : "0",
-            "Test::More" : "0.98"
+            "Test::More" : "0.98",
+            "blib" : "0"
          }
       }
    },
@@ -49,6 +50,6 @@
       },
       "homepage" : "http://search.cpan.org/dist/Dist-Zilla-Plugin-PodInherit/"
    },
-   "version" : "0.003"
+   "version" : "0.004"
 }
 

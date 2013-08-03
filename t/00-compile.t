@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-# This test was generated via Dist::Zilla::Plugin::Test::Compile 2.011
+# This test was generated via Dist::Zilla::Plugin::Test::Compile 2.013
 
 use Test::More 0.88;
 
@@ -10,7 +10,7 @@ use Test::More 0.88;
 use Capture::Tiny qw{ capture };
 
 my @module_files = qw(
-lib/Dist/Zilla/Plugin/PodInherit.pm
+Dist/Zilla/Plugin/PodInherit.pm
 );
 
 my @scripts = qw(

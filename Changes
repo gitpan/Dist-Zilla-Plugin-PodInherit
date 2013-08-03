@@ -1,5 +1,14 @@
 Revision history for Dist-Zilla-Plugin-PodInherit
 
+0.004     2013-08-03 02:14:29 Europe/London
+	Functional changes:
+	* Use the FileMunger and FileInjector roles so that
+	we generate POD output in the build directory
+	rather than affecting the original source paths
+
+	Documentation:
+	* Portability note and comment about .pod/.pm split
+
 0.003     2013-08-01 18:27:28 Europe/London
 	No functional changes
 
