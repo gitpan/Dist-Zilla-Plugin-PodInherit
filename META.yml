@@ -16,11 +16,11 @@ meta-spec:
   version: 1.4
 name: Dist-Zilla-Plugin-PodInherit
 requires:
-  Dist::Zilla: 4.000
+  Dist::Zilla: 4.200010
   Pod::Inherit: 0.90
   Pod::POM: 0.28
   parent: 0
 resources:
   bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-PodInherit
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-PodInherit/
-version: 0.006
+version: 0.007

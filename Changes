@@ -1,5 +1,12 @@
 Revision history for Dist-Zilla-Plugin-PodInherit
 
+0.007     2013-08-04 03:20:10 Europe/London
+	No functional changes
+
+	Dependency fixes:
+	* Test::DZil is only installed on 4.200002+, but use 4.200010 to pick
+	up some fixes which may be relevant
+
 0.006     2013-08-03 03:21:38 Europe/London
 	Bugs fixed:
 	* Skip in-memory files without attempting to process them

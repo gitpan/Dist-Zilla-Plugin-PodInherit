@@ -20,7 +20,7 @@ my %WriteMakefileArgs = (
   "LICENSE" => "perl",
   "NAME" => "Dist::Zilla::Plugin::PodInherit",
   "PREREQ_PM" => {
-    "Dist::Zilla" => "4.000",
+    "Dist::Zilla" => "4.200010",
     "Pod::Inherit" => "0.90",
     "Pod::POM" => "0.28",
     "parent" => 0
@@ -30,7 +30,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.98",
     "blib" => 0
   },
-  "VERSION" => "0.006",
+  "VERSION" => "0.007",
   "test" => {
     "TESTS" => "t/*.t"
   }
